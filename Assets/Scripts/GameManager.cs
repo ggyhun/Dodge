@@ -27,12 +27,13 @@ public class GameManager : MonoBehaviour {
 
     public void EndGame() {
         isGameOver = true;
-        gameOverText.SetActive(false);
+        gameOverText.SetActive(true);
         float bestTime = PlayerPrefs.GetFloat("BestTime");
         if (surviveTime > bestTime) {
-            PlayerPrefs.SetFloat("BestTime", surviveTime);
+            bestTime = surviveTime;
+            PlayerPrefs.SetFloat("BestTime", bestTime);
             recordText.text = "New Record: " + (int)surviveTime;
         }
-        recordText.text = "Best TIme: " + (int) bestTime;
+        recordText.text = "Best Time: " + (int) bestTime;
     }
 }
